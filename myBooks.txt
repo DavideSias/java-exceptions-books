@@ -1,2 +1,2 @@
-
-Prova scrittura file in Java!
+Book{title='Harry Potter', pages=400, author='J.K Rowling', publisher='Salani Editore'}
+Book{title='Il signore degli anelli', pages=1000, author='Tolkien', publisher='Bompiani'}

@@ -54,18 +54,25 @@ public class Main {
         }
 
         System.out.println(Arrays.toString(books));
-        scan.close();
 
         //BONUS
-        File newFile = new File("./myBooks.txt");
-        newFile.createNewFile();
+        File myFile = new File("./myBooks.txt");
+        myFile.createNewFile();
         try {
-            boolean append = true;
-            FileWriter myWriter = new FileWriter("myBooks.txt", append);
-            myWriter.write("Prova scrittura file in Java!\n");
+            FileWriter myWriter = new FileWriter("myBooks.txt");
+            for (int i = 0; i < books.length; i++) {
+                myWriter.write(books[i].toString() + "\n");
+            }
             myWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        Scanner reader = new Scanner(myFile);
+        while (reader.hasNextLine()) {
+            String line = reader.nextLine();
+            System.out.println(line);
+        }
+        scan.close();
     }
 }
