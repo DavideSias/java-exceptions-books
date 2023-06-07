@@ -6,11 +6,21 @@ public class Book {
     private String author;
     private String publisher;
 
-    public Book(String title, int pages, String author, String publisher) {
-        this.title = title;
-        this.pages = pages;
-        this.author = author;
-        this.publisher = publisher;
+    public Book(String title, int pages, String author, String publisher) throws InvalidBookException {
+        if (title == null || title.isBlank()) {
+            throw new InvalidBookException("Titolo non valido");
+        } else if (pages < 0) {
+            throw new InvalidBookException("Le pagine devono essere > 0");
+        } else if (author == null || author.isBlank()) {
+            throw new InvalidBookException("Autore non valido");
+        } else if (publisher == null || publisher.isBlank()) {
+            throw new InvalidBookException("Editore non valido");
+        } else {
+            this.title = title;
+            this.pages = pages;
+            this.author = author;
+            this.publisher = publisher;
+        }
     }
 
     public String getTitle() {
@@ -43,5 +53,15 @@ public class Book {
 
     public void setPublisher(String publisher) {
         this.publisher = publisher;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "title='" + title + '\'' +
+                ", pages=" + pages +
+                ", author='" + author + '\'' +
+                ", publisher='" + publisher + '\'' +
+                '}';
     }
 }
