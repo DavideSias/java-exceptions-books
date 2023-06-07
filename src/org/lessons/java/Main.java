@@ -1,10 +1,13 @@
 package org.lessons.java;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Scanner scan = new Scanner(System.in);
         int nBooks = 0;
 
@@ -52,5 +55,17 @@ public class Main {
 
         System.out.println(Arrays.toString(books));
         scan.close();
+
+        //BONUS
+        File newFile = new File("./myBooks.txt");
+        newFile.createNewFile();
+        try {
+            boolean append = true;
+            FileWriter myWriter = new FileWriter("myBooks.txt", append);
+            myWriter.write("Prova scrittura file in Java!\n");
+            myWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
