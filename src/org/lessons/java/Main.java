@@ -6,8 +6,17 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        System.out.print("Quanti libri vuoi inserire?: ");
-        int nBooks = Integer.parseInt(scan.nextLine());
+        int nBooks = 0;
+
+        do {
+            try {
+                System.out.print("Quanti libri vuoi inserire?: ");
+                nBooks = Integer.parseInt(scan.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Inserire un numero valido");
+            }
+
+        } while (nBooks <= 0);
 
         Book[] books = new Book[nBooks];
 
